@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PriceWatch - Track & Compare Prices</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <h1 class="logo">PriceWatch</h1>
+            <div id="auth-nav" class="nav-links">
+                <button id="nav-search-btn" class="nav-link active">Search</button>
+                <button id="nav-watchlist-btn" class="nav-link">Watchlist</button>
+                <span id="user-email" class="user-display"></span>
+                <button id="logout-btn" class="btn btn-outline" style="display:none">Logout</button>
+                <button id="login-open-btn" class="btn btn-primary">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Search View -->
+        <section id="search-view" class="view">
+            <div class="hero">
+                <h2>Find the best deals across stores</h2>
+                <div class="search-section">
+                    <div class="search-container">
+                        <input type="text" id="search-input" placeholder="Search for products (e.g. iPhone 15, Sony WH-1000XM5)...">
+                        <button id="search-btn" class="btn btn-primary">Search</button>
+                    </div>
+                    <div class="filter-container">
+                        <label class="filter-item"><input type="checkbox" name="store" value="Amazon" checked> Amazon</label>
+                        <label class="filter-item"><input type="checkbox" name="store" value="Flipkart" checked> Flipkart</label>
+                        <label class="filter-item"><input type="checkbox" name="store" value="Croma" checked> Croma</label>
+                        <label class="filter-item"><input type="checkbox" name="store" value="Reliance" checked> Reliance Digital</label>
+                    </div>
+                </div>
+            </div>
+            <div id="loading" class="loading-spinner" style="display:none">
+                <div class="spinner"></div>
+                <p>Scraping and validating live deals...</p>
+            </div>
+            <div id="search-results" class="results-grid"></div>
+            <div id="pagination" class="pagination-container"></div>
+        </section>
+
+        <!-- Watchlist View -->
+        <section id="watchlist-view" class="view" style="display:none">
+            <header class="view-header">
+                <h2>Your Watchlist</h2>
+                <p>Manage your price drop alerts</p>
+            </header>
+            <div id="watchlist-results" class="results-grid"></div>
+        </section>
+    </main>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Welcome Back</h3>
+                <span class="close-btn">&times;</span>
+            </div>
+            <form id="auth-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="you@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" id="auth-submit-btn" class="btn btn-primary w-full">Login</button>
+            </form>
+            <div class="modal-footer">
+                <p id="toggle-auth">Don't have an account? <a href="#">Register</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart Modal -->
+    <div id="chart-modal" class="modal">
+        <div class="modal-content chart-modal-content">
+            <div class="modal-header">
+                <h3>Price History</h3>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="chart-container">
+                <canvas id="priceChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="details-modal" class="modal">
+        <div class="modal-content chart-modal-content">
+            <div class="modal-header">
+                <h3 id="details-title">Product Details</h3>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="details-body">
+                <div id="ai-summary-section">
+                    <h4 style="margin-bottom: 0.5rem; color: var(--primary-color)">AI Summary (Groq)</h4>
+                    <div id="ai-summary-content" class="ai-summary">Loading...</div>
+                </div>
+                <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border-color)">
+                <div id="reviews-section">
+                    <h4 style="margin-bottom: 0.5rem">Top Review Snippets</h4>
+                    <div id="reviews-content">No reviews found.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
