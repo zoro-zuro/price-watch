@@ -1,5 +1,25 @@
 # `plan.md` – Price Tracker & Comparison Site
+    <!-- # Port for Express server
+PORT=3000
 
+# Secret key for JWT signing
+JWT_SECRET=readpannathukunanri
+
+# Scrapingdog API Key (Amazon scraping)
+SCRAPINGDOG_API_KEY=69cc06b967d13553d0ed6e0f
+
+# Serper API Key (Google Shopping scraping)
+SERPER_API_KEY=162309293238b1649b766ff1e023d4a36dacbd04
+
+# Groq API Key (AI summaries)
+GROQ_API_KEY=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
+
+# SMTP configuration for email alerts (nodemailer)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=yasinnew72@gmail.com
+SMTP_PASS=vrje keul dprw vufx
+EMAIL_FROM=yasinnew72@gmail.com -->
 ## 1. Overview
 A web app that lets users search for products across Amazon/Flipkart, compare prices, and set price drop alerts. Users can create accounts to save products and receive email notifications when the price hits their target. All data is fetched in real‑time via Scrapingdog and Serper APIs, with no permanent product database.
 
